@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="../webview/build/libwebview.dylib">
+    <Content Include="thirdparty/webview/build/libwebview.dylib">
+      <Link>libwebview.dylib</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
