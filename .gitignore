@@ -1,0 +1,4 @@
+project.lock.json
+bin/
+obj/
+*.nupkg
