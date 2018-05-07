@@ -14,6 +14,11 @@ namespace Webview
             return new Content(dataUri.ToString());
         }
 
+        public static IContent FromUri(Uri uri)
+        {
+            return new Content(uri.ToString());
+        }
+
         private Content(string rawUri)
         {
             _rawUri = rawUri;
