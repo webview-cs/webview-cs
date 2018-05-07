@@ -9,10 +9,17 @@ namespace Webview
     {
         private readonly UIntPtr _webview;
 
+        public static void Simple(string title, IContent content, Size size = default, bool resizable = true)
+        {
+            if (size == default)
+                size = new Size(800, 600);
+            webview(title, content.ToUri(), size.Width, size.Height, resizable ? 1 : 0);
+        }
+
         // TODO: make this internal and provide a builder API.
-        public Webview(
+        internal Webview(
             string title,
-            string url,
+            IContent content,
             Size size,
             bool resizable,
             bool debug,
@@ -20,7 +27,7 @@ namespace Webview
         {
             _webview = webview_alloc(
                 title,
-                url,
+                content.ToUri(),
                 size.Width,
                 size.Height,
                 resizable ? 1 : 0,
