@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace webview_cs
+namespace Webview
 {
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     internal delegate void webview_external_invoke_cb_t(

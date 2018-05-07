@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace webview_cs
+namespace Webview
 {
     using System.Text;
     using static Ffi;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var html = @"<html><body><h1>hello ü world</h1><script>window.external.invoke(""hello ümlaß world"")</script>";
             var uri = "data:text/html;charset=UTF-8;base64," + Convert.ToBase64String(Encoding.UTF8.GetBytes(html));
