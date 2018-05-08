@@ -72,8 +72,8 @@ This is still a work in progress. Native webview binaries are only provided for 
 
 ## Feature Status
 
- * [*] Run webview with standard parameters.
- * [*] Builder API for creating webviews.
+ * [x] Run webview with standard parameters.
+ * [x] Builder API for creating webviews.
  * [ ] Native binaries for Linux, macOS, and Windows.
  * [ ] Option to inject a server to respond to requests (auto binding to random ephemeral port and proxying requests).
   * Maybe this should take an `IWebHostBuilder` or similar from ASP .NET Core.
