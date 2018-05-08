@@ -46,7 +46,7 @@ new WebviewBuilder(new Uri("http://google.com"))
     .WithSize(new Size(1024, 768))
     .Resizable()
     .Debug()
-    .WithCallback((webview, action) => {
+    .WithInvokeCallback((webview, action) => {
       Console.WriteLine("Action: {0}", action);
     })
     .Build()
