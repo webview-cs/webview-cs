@@ -9,6 +9,9 @@ namespace Webview
     {
         private readonly UIntPtr _webview;
 
+        /// <summary>
+        /// Start a simple webview.
+        /// </summary>
         public static void Simple(string title, IContent content, Size size = default, bool resizable = true)
         {
             if (size == default)
@@ -16,7 +19,6 @@ namespace Webview
             webview(title, content.ToUri(), size.Width, size.Height, resizable ? 1 : 0);
         }
 
-        // TODO: make this internal and provide a builder API.
         internal Webview(
             string title,
             IContent content,
@@ -32,11 +34,24 @@ namespace Webview
                 size.Height,
                 resizable ? 1 : 0,
                 debug ? 1 : 0,
-                null); // TODO: callback support
+                null); // TODO: callback support. How do we safely wrap the returned pointer?
             if (_webview == UIntPtr.Zero)
                 throw new Exception("Could not allocate webview");
         }
 
+        /// <summary>
+        /// Get and set the webview's attached userdata. This can later be read
+        /// to provide webview-specific actions in callbacks.
+        /// </summary>
+        public UIntPtr UserData
+        {
+            set => webview_set_userdata(_webview, value);
+            get => webview_get_userdata(_webview);
+        }
+
+        /// <summary>
+        /// Run the webview main loop. Returns when the window is closed.
+        /// </summary>
         public void Run()
         {
             while (webview_loop(_webview, 1) == 0)

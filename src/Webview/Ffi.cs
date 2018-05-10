@@ -63,5 +63,13 @@ namespace Webview
         internal static extern void webview_exit(UIntPtr webview);
         // WEBVIEW_API void webview_debug(const char *format, ...);
         // WEBVIEW_API void webview_print_log(const char *s);
+
+        // WEBVIEW_API void webview_set_userdata(struct webview* w, void* userdata);
+        [DllImport("webview", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void webview_set_userdata(UIntPtr w, UIntPtr ud);
+
+        // WEBVIEW_API void* webview_get_userdata(struct webview* w);
+        [DllImport("webview", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern UIntPtr webview_get_userdata(UIntPtr w);
     }
 }
