@@ -5,39 +5,58 @@
     <Version>0.1.0</Version>
     <LangVersion>Latest</LangVersion>
     <AssemblyName>Webview.Net</AssemblyName>
-    <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
-    <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
-    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>Webview</PackageId>
     <Authors>Webview</Authors>
     <Product>Webview</Product>
+    <RuntimeIdentifiers>win10-x64;osx-x64;linux-x64;linux-arm</RuntimeIdentifiers>
+    <OSArchitecture>$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString())</OSArchitecture>
+    <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+    <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+    <IsX64Linux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true' And '$(OSArchitecture)' =='X64'">true</IsX64Linux>
+    <IsArmLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true' And '$(OSArchitecture)' =='Arm'">true</IsArmLinux>
+    <WindowsArtifacts Condition="('$(IsWindows)' == 'true' And '$(RuntimeIdentifier)' == '') Or ('$(RuntimeIdentifier)' == 'win10-x64')">true</WindowsArtifacts>
+    <OSXArtifacts Condition="('$(IsOSX)' == 'true' And '$(RuntimeIdentifier)' == '') Or ('$(RuntimeIdentifier)' == 'osx-x64')">true</OSXArtifacts>
+    <LinuxArmArtifacts Condition="('$(IsArmLinux)' == 'true' And '$(RuntimeIdentifier)' == '') Or ('$(RuntimeIdentifier)' == 'linux-arm')">true</LinuxArmArtifacts>
+    <LinuxX64Artifacts Condition="('$(IsX64Linux)' == 'true' And '$(RuntimeIdentifier)' == '') Or ('$(RuntimeIdentifier)' == 'linux-x64')">true</LinuxX64Artifacts>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Include="../../thirdparty/webview/build/osx/libwebview.dylib">
       <PackagePath>runtimes/osx/native/libwebview.dylib</PackagePath>
       <Pack>true</Pack>
-      <Link Condition="'$(IsOSX)' == 'true'">libwebview.dylib</Link>
-      <CopyToOutputDirectory Condition="'$(IsOSX)' == 'true'">PreserveNewest</CopyToOutputDirectory>
+      <Link Condition="'$(OSXArtifacts)' == 'true'">libwebview.dylib</Link>
+      <CopyToOutputDirectory Condition="'$(OSXArtifacts)' == 'true'">PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="../../thirdparty/webview/build/windows/Release/webview.dll">
       <PackagePath>runtimes/win/native/webview.dll</PackagePath>
       <Pack>true</Pack>
-      <Link Condition="'$(IsWindows)' == 'true'">webview.dll</Link>
-      <CopyToOutputDirectory Condition="'$(IsWindows)' == 'true'">PreserveNewest</CopyToOutputDirectory>
+      <Link Condition="'$(WindowsArtifacts)' == 'true'">webview.dll</Link>
+      <CopyToOutputDirectory Condition="'$(WindowsArtifacts)' == 'true'">PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="../../thirdparty/webview/build/linux/libwebview.so">
-      <PackagePath>runtimes/linux/native/libwebview.so</PackagePath>
+    <Content Include="../../thirdparty/webview/build/linux/x64/libwebview.so">
+      <PackagePath>runtimes/linux/native/x64/libwebview.so</PackagePath>
       <Pack>true</Pack>
-      <Link Condition="'$(IsLinux)' == 'true'">libwebview.so</Link>
-      <CopyToOutputDirectory Condition="'$(IsLinux)' == 'true'">PreserveNewest</CopyToOutputDirectory>
+      <Link Condition="'$(LinuxX64Artifacts)' == 'true'">libwebview.so</Link>
+      <CopyToOutputDirectory Condition="'$(LinuxX64Artifacts)' == 'true'">PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
-  
+  <ItemGroup>
+    <Content Include="../../thirdparty/webview/build/linux/arm/libwebview.so">
+      <PackagePath>runtimes/linux/native/arm/libwebview.so</PackagePath>
+      <Pack>true</Pack>
+      <Link Condition="'$(LinuxArmArtifacts)' == 'true'">libwebview.so</Link>
+      <CopyToOutputDirectory Condition="'$(LinuxArmArtifacts)' == 'true'">PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Target Name="PrintRID" BeforeTargets="Build">
+    <Message Text="Using native binaries for: " Importance="high" />
+    <Message Condition="'$(WindowsArtifacts)' == 'true'" Text="Windows10 X64" Importance="high" />
+    <Message Condition="'$(OSXArtifacts)' == 'true'" Text="OSX X64" Importance="high" />
+    <Message Condition="'$(LinuxArmArtifacts)' == 'true'" Text="Linux ARM" Importance="high" />
+    <Message Condition="'$(LinuxX64Artifacts)' == 'true'" Text="Linux X64" Importance="high" />
+  </Target>
 </Project>

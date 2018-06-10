@@ -3,3 +3,6 @@ bin/
 obj/
 *.nupkg
 .vs/
+/examples/Builder/build
+/examples/HelloWorld/build
+/src/Webview/build
