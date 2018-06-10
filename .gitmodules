@@ -1,4 +1,4 @@
 [submodule "thirdparty/webview"]
 	path = thirdparty/webview
-	url = https://github.com/iwillspeak/webview.git
-	branch = webview-opaque
+	url = https://github.com/zenakuten/webview.git
+	branch = master
