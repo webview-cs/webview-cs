@@ -52,11 +52,4 @@
       <CopyToOutputDirectory Condition="'$(LinuxArmArtifacts)' == 'true'">PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <Target Name="PrintRID" BeforeTargets="Build">
-    <Message Text="Using native binaries for: " Importance="high" />
-    <Message Condition="'$(WindowsArtifacts)' == 'true'" Text="Windows10 X64" Importance="high" />
-    <Message Condition="'$(OSXArtifacts)' == 'true'" Text="OSX X64" Importance="high" />
-    <Message Condition="'$(LinuxArmArtifacts)' == 'true'" Text="Linux ARM" Importance="high" />
-    <Message Condition="'$(LinuxX64Artifacts)' == 'true'" Text="Linux X64" Importance="high" />
-  </Target>
 </Project>
