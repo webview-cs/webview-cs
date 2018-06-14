@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Threading;
 
 namespace Webview
 {
@@ -58,6 +59,32 @@ namespace Webview
                 ;
             webview_exit(_webview);
         }
+
+        /// <summary>
+        /// Run a single loop 
+        /// </summary>
+        /// <returns></returns>
+        public int Loop()
+        {
+            Thread.Sleep(1);//let messages process, we are calling webview_loop with blocking=0
+            return webview_loop(_webview, 0);
+        }
+
+        public string Title
+        {
+            set => webview_set_title(_webview, value);
+        }
+
+        public bool Fullscreen
+        {
+            set => webview_set_fullscreen(_webview, value ? 1 : 0);
+        }
+
+        public int Eval(string js) => webview_eval(_webview, js);
+
+        public int InjectCss(string css) => webview_inject_css(_webview, css);
+
+        public void SetColor(Color c) => webview_set_color(_webview, c.R, c.G, c.B, c.A);
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
