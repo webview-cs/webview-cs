@@ -6,7 +6,7 @@ namespace Webview
     public class WebviewBuilder
     {
         private string _title;
-        private IContent _contnet;
+        private IContent _content;
         private Size _size;
         private bool _resizable;
         private bool _debug;
@@ -15,7 +15,7 @@ namespace Webview
         public WebviewBuilder(string title, IContent content)
         {
             _title = title;
-            _contnet = content;
+            _content = content;
             _size = default;
             _resizable = true;
             _debug = false;
@@ -24,6 +24,14 @@ namespace Webview
 
         public WebviewBuilder(Uri uri) :
             this(uri.ToString(), Content.FromUri(uri))
+        {}
+
+        public WebviewBuilder(string Title) :
+            this(Title, Content.FromHtml(""))
+        {}
+
+        public WebviewBuilder() :
+            this("", Content.FromHtml(""))
         {}
 
         public WebviewBuilder WithSize(Size size)
@@ -50,6 +58,19 @@ namespace Webview
             return this;
         }
 
+        public WebviewBuilder WithContent(IContent content)
+        {
+            _content = content;
+            return this;
+        }
+
+        
+        public WebviewBuilder WithTitle(string title)
+        {
+            _title = title;
+            return this;
+        }
+
         public Webview Build()
         {
             var size = _size;
@@ -57,7 +78,7 @@ namespace Webview
                 size = new Size(800, 600);
             return new Webview(
                 _title,
-                _contnet,
+                _content,
                 size,
                 _resizable,
                 _debug,
