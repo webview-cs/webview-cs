@@ -4,7 +4,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{642A8DE8-5577-4906-9558-852B3F70E0D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webview", "src\Webview\Webview.csproj", "{B138084D-C0CF-42C4-8345-4DB1580D9784}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webview.Core", "src\Webview\Webview.Core.csproj", "{B138084D-C0CF-42C4-8345-4DB1580D9784}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{CDBA2E0B-C3D4-46FC-B482-CDE7279AACCE}"
 EndProject

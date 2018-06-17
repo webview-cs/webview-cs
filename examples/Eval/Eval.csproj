@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Webview\Webview.csproj" />
+    <ProjectReference Include="..\..\src\Webview\Webview.Core.csproj" />
   </ItemGroup>
 
 </Project>
