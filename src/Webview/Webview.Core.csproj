@@ -20,6 +20,9 @@
     <LinuxArmArtifacts Condition="('$(IsArmLinux)' == 'true' And '$(RuntimeIdentifier)' == '') Or ('$(RuntimeIdentifier)' == 'linux-arm')">true</LinuxArmArtifacts>
     <LinuxX64Artifacts Condition="('$(IsX64Linux)' == 'true' And '$(RuntimeIdentifier)' == '') Or ('$(RuntimeIdentifier)' == 'linux-x64')">true</LinuxX64Artifacts>
     <RootNamespace>Webview</RootNamespace>
+    <Description>.NET host for the Webview WebBrowser</Description>
+    <PackageLicenseUrl>https://github.com/zenakuten/webview-cs/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/zenakuten/webview-cs</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="../../thirdparty/webview/build/osx/libwebview.dylib">

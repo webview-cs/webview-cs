@@ -4,17 +4,17 @@ C# Bindings to https://github.com/zserge/webview
 
 ## Installation
 
-You can get your hands on Webview from NuGet:
+You can get your hands on Webview.Core from NuGet:
 
-    PM> Install-Package Webview
+    PM> Install-Package Webview.Core
 
 or from the dotnet command line:
 
-    $ dotnet add package Webview
+    $ dotnet add package Webview.Core
 
 ## Examples
 
-There are two main APIs to create a webview; the simple API, and the builder API. With the simple API all interaction takes place via the `Webview.Webview.Simple` method. This allows you to quickly get a webview running, but doesn't provide the ability to register an invoke callback for JS amongst other things. This is a good starting place.
+There are three main APIs to create a webview; the simple API, an eval demonstration, and the builder API. With the simple API all interaction takes place via the `Webview.Webview.Simple` method. This allows you to quickly get a webview running, but doesn't provide the ability to register an invoke callback for JS amongst other things. This is a good starting place.
 
 ```cs
 using Webview
@@ -66,15 +66,51 @@ using (var webview = new WebviewBuider("Title", Content.FromHtml("<p>Hello World
 }
 ```
 
-## Tread Carefully
+### WebHost
 
-This is still a work in progress. Native webview binaries are only provided for macOS right now, you'll need to proved your own `libwebview.so` on Linux and `webview.dll` on Windows.
+To create a standalone desktop application out of an ASP.NET Core website, use the Webview.WebHost nuget package.
+
+
+    PM> Install-Package Webview.WebHost
+
+or from the dotnet command line:
+
+    $ dotnet add package Webview.WebHost
+
+
+Replace the default Main function in Program.cs with this:
+
+```cs
+using Webview.WebHost;
+...
+
+    public static void Main(string[] args)
+        {
+            CreateWebHostBuilder(args).ConfigureForWebview().Build().RunWebview();
+        }
+
+```
+
+To create the standalone executable, the project must be published.  
+
+    $ dotnet publish -r win10-x64 -c Release
+
+
+Supported runtime identifiers are 'win10-x64', 'osx-x64', 'linux-x64', and 'linux-arm'.
+
+
+*Note - Windows has the concept of console and windows applications, but .net core only understands console applications.  To make the resulting .net core console application behave as a windows application (detatches console), you can use the editbin utility. The easiest way to get editbin is to install Visual Studio Community and include the C++ tools.  
+
+From a Visual Studio Developer command prompt:
+
+    editbin /subsystem:windows app.exe
+
+
+This not an issue under linux and osx.
 
 ## Feature Status
 
  * [x] Run webview with standard parameters.
  * [x] Builder API for creating webviews.
- * [ ] Native binaries for Linux, macOS, and Windows.
- * [ ] Option to inject a server to respond to requests (auto binding to random ephemeral port and proxying requests).
-  * Maybe this should take an `IWebHostBuilder` or similar from ASP .NET Core.
-  * Should this be compatible with OWIN apps too?
+ * [x] Native binaries for Linux x64, Linux Arm, macOS x64, and Windows10 x64.
+ * [x] WebHostBuilder and WebHost extensions for running a .NET Core website as a desktop application
