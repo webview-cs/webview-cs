@@ -19,7 +19,7 @@ There are three main APIs to create a webview; the simple API, an eval demonstra
 ```cs
 using Webview
 
-Webview.Webview.Simple("Window Title", "https://github.com/iwillspeak/webview-cs"))
+Webview.Webview.Simple("Window Title", "https://google.com"))
 ```
 
 You can also provide an initial window size and control if the window can be resized:
