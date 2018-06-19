@@ -12,13 +12,12 @@ namespace Webview.WebHost
     {
         public static void RunWebview(this IWebHost host, WebviewBuilder builder)
         {
-            CancellationTokenSource cts = new CancellationTokenSource();
-            host.StartAsync(cts.Token);
+            host.Start();
             var features = host.ServerFeatures.Get<IServerAddressesFeature>();
             string address = features.Addresses.FirstOrDefault();
             IContent content = Content.FromUri(new Uri(address));
             builder.WithContent(content).Build().Run();
-            cts.Cancel();
+            host.StopAsync();
         }
 
         public static void RunWebview(this IWebHost host, string Title = "", Size size = default(Size))
@@ -29,10 +28,14 @@ namespace Webview.WebHost
 
     public static class WebHostBuilderExtensions
     {
-        public static IWebHostBuilder ConfigureForWebview(this IWebHostBuilder builder)
+        public static IWebHostBuilder WithDynamicPort(this IWebHostBuilder builder)
         {
-            return builder.ConfigureLogging((ILoggingBuilder logBuilder) => { logBuilder.ClearProviders(); })
-                .UseUrls("http://127.0.0.1:0");
+            return builder.UseUrls("http://127.0.0.1:0");
+        }
+
+        public static IWebHostBuilder WithNoOutput(this IWebHostBuilder builder)
+        {
+            return builder.ConfigureLogging((ILoggingBuilder logBuilder) => { logBuilder.ClearProviders(); });
         }
     }
 }
