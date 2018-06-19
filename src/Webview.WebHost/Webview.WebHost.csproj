@@ -2,15 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <Description>Run a website as a desktop application using Webview</Description>
     <PackageLicenseUrl>https://github.com/zenakuten/webview-cs/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/zenakuten/webview-cs</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.0.3" />
     <PackageReference Include="Webview.Core" Version="0.0.2" />
   </ItemGroup>
 
