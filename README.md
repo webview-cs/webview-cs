@@ -86,7 +86,7 @@ using Webview.WebHost;
 
     public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).ConfigureForWebview().Build().RunWebview();
+            CreateWebHostBuilder(args).WithDynamicPort().WithNoOutput().Build().RunWebview();
         }
 
 ```
