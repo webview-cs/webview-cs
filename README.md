@@ -14,7 +14,7 @@ or from the dotnet command line:
 
 ## Examples
 
-There are twho main APIs to create a webview; the simple API, and the builder API. With the simple API all interaction takes place via the `Webview.Webview.Simple` method. This allows you to quickly get a webview running, but doesn't provide the ability to register an invoke callback for JS amongst other things. This is a good starting place.
+There are two main APIs to create a webview; the simple API, and the builder API. With the simple API all interaction takes place via the `Webview.Webview.Simple` method. This allows you to quickly get a webview running, but doesn't provide the ability to register an invoke callback for JS amongst other things. This is a good starting place.
 
 ```cs
 using Webview
