@@ -4,6 +4,17 @@
    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
    "version": "0.2.0",
    "configurations": [
+       {
+           "name": ".NET Core Launch (Eval)",
+           "type": "coreclr",
+           "request": "launch",
+           "preLaunchTask": "build",
+           "program": "${workspaceRoot}/examples/Eval/bin/Debug/netcoreapp2.1/eval.dll",
+           "args": [],
+           "cwd": "${workspaceRoot}/examples/Eval",
+           "stopAtEntry": false,
+           "console": "internalConsole"
+       },
         {
             "name": ".NET Core Launch (HelloWorld)",
             "type": "coreclr",
