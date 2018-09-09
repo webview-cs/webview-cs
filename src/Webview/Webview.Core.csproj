@@ -8,7 +8,7 @@
     <PackageId>Webview.Core</PackageId>
     <Authors>Webview.Core</Authors>
     <Product>Webview.Core</Product>
-    <RuntimeIdentifiers>win10-x64;osx-x64;linux-x64;linux-arm</RuntimeIdentifiers>
+    <RuntimeIdentifiers>win10-x64;win10-x86;osx-x64;linux-x64;linux-arm</RuntimeIdentifiers>
     <RootNamespace>Webview</RootNamespace>
     <Description>.NET host for the Webview WebBrowser</Description>
     <PackageLicenseUrl>https://github.com/webview-cs/webview-cs/blob/master/LICENSE</PackageLicenseUrl>
