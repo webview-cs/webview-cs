@@ -96,7 +96,7 @@ To create the standalone executable, the project must be published.
 
 Supported runtime identifiers are 'win10-x64', 'win10-x64', 'osx-x64', 'linux-x64', and 'linux-arm'.
 
-## Windows Console Gotchas
+## Windows Console Gotchas
 
 *Note* - Windows has the concept of console and windows applications, but .net core only understands console applications.  To make the resulting .net core console application behave as a windows application (detatches console), you can use the `editbin` utility. The easiest way to get `editbin` is to install Visual Studio Community and include the C++ tools.
 
