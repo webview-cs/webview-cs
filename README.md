@@ -1,6 +1,6 @@
 # webview-cs
 
-C# Bindings to https://github.com/zserge/webview
+C# Bindings to https://github.com/zserge/webview. Easily create cross-platform desktop applications with web technologies.
 
 ## Installation
 
@@ -66,10 +66,9 @@ using (var webview = new WebviewBuider("Title", Content.FromHtml("<p>Hello World
 }
 ```
 
-### WebHost
+### ASP .NET Core WebHost
 
 To create a standalone desktop application out of an ASP.NET Core website, use the Webview.WebHost nuget package.
-
 
     PM> Install-Package Webview.WebHost
 
@@ -95,16 +94,15 @@ To create the standalone executable, the project must be published.
 
     $ dotnet publish -r win10-x64 -c Release
 
+Supported runtime identifiers are 'win10-x64', 'win10-x64', 'osx-x64', 'linux-x64', and 'linux-arm'.
 
-Supported runtime identifiers are 'win10-x64', 'osx-x64', 'linux-x64', and 'linux-arm'.
+## Windows Console Gotchas
 
-
-*Note - Windows has the concept of console and windows applications, but .net core only understands console applications.  To make the resulting .net core console application behave as a windows application (detatches console), you can use the editbin utility. The easiest way to get editbin is to install Visual Studio Community and include the C++ tools.  
+*Note* - Windows has the concept of console and windows applications, but .net core only understands console applications.  To make the resulting .net core console application behave as a windows application (detatches console), you can use the `editbin` utility. The easiest way to get `editbin` is to install Visual Studio Community and include the C++ tools.
 
 From a Visual Studio Developer command prompt:
 
     editbin /subsystem:windows app.exe
-
 
 This not an issue under linux and osx.
 
@@ -112,5 +110,10 @@ This not an issue under linux and osx.
 
  * [x] Run webview with standard parameters.
  * [x] Builder API for creating webviews.
- * [x] Native binaries for Linux x64, Linux Arm, macOS x64, and Windows10 x64.
+ * [x] Native binaries for:
+  * Linux x64
+  * Linux Arm
+  * macOS x66
+  * Windows10 x64
+  * Windows10 x86
  * [x] WebHostBuilder and WebHost extensions for running a .NET Core website as a desktop application
