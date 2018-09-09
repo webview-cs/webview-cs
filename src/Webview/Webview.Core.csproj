@@ -5,56 +5,19 @@
     <Version>0.0.3</Version>
     <LangVersion>Latest</LangVersion>
     <AssemblyName>Webview.Core</AssemblyName>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>Webview.Core</PackageId>
     <Authors>Webview.Core</Authors>
     <Product>Webview.Core</Product>
     <RuntimeIdentifiers>win10-x64;osx-x64;linux-x64;linux-arm</RuntimeIdentifiers>
-    <OSArchitecture>$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString())</OSArchitecture>
-    <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
-    <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
-    <IsX64Linux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true' And '$(OSArchitecture)' =='X64'">true</IsX64Linux>
-    <IsArmLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true' And '$(OSArchitecture)' =='Arm'">true</IsArmLinux>
-    <WindowsArtifacts Condition="('$(IsWindows)' == 'true' And '$(RuntimeIdentifier)' == '') Or ('$(RuntimeIdentifier)' == 'win10-x64')">true</WindowsArtifacts>
-    <OSXArtifacts Condition="('$(IsOSX)' == 'true' And '$(RuntimeIdentifier)' == '') Or ('$(RuntimeIdentifier)' == 'osx-x64')">true</OSXArtifacts>
-    <LinuxArmArtifacts Condition="('$(IsArmLinux)' == 'true' And '$(RuntimeIdentifier)' == '') Or ('$(RuntimeIdentifier)' == 'linux-arm')">true</LinuxArmArtifacts>
-    <LinuxX64Artifacts Condition="('$(IsX64Linux)' == 'true' And '$(RuntimeIdentifier)' == '') Or ('$(RuntimeIdentifier)' == 'linux-x64')">true</LinuxX64Artifacts>
     <RootNamespace>Webview</RootNamespace>
     <Description>.NET host for the Webview WebBrowser</Description>
-    <PackageLicenseUrl>https://github.com/zenakuten/webview-cs/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/zenakuten/webview-cs</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/webview-cs/webview-cs/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/webview-cs/webview-cs</PackageProjectUrl>
     <PackageReleaseNotes />
   </PropertyGroup>
+
   <ItemGroup>
-    <Content Include="../../thirdparty/webview/build/osx/libwebview.dylib">
-      <PackagePath>runtimes/osx/native/libwebview.dylib</PackagePath>
-      <Pack>true</Pack>
-      <Link Condition="'$(OSXArtifacts)' == 'true'">libwebview.dylib</Link>
-      <CopyToOutputDirectory Condition="'$(OSXArtifacts)' == 'true'">PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <PackageReference Include="Webview.Batteries.Mac" Version="0.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="../../thirdparty/webview/build/windows/Release/webview.dll">
-      <PackagePath>runtimes/win/native/webview.dll</PackagePath>
-      <Pack>true</Pack>
-      <Link Condition="'$(WindowsArtifacts)' == 'true'">webview.dll</Link>
-      <CopyToOutputDirectory Condition="'$(WindowsArtifacts)' == 'true'">PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="../../thirdparty/webview/build/linux/x64/libwebview.so">
-      <PackagePath>runtimes/linux/native/x64/libwebview.so</PackagePath>
-      <Pack>true</Pack>
-      <Link Condition="'$(LinuxX64Artifacts)' == 'true'">libwebview.so</Link>
-      <CopyToOutputDirectory Condition="'$(LinuxX64Artifacts)' == 'true'">PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="../../thirdparty/webview/build/linux/arm/libwebview.so">
-      <PackagePath>runtimes/linux/native/arm/libwebview.so</PackagePath>
-      <Pack>true</Pack>
-      <Link Condition="'$(LinuxArmArtifacts)' == 'true'">libwebview.so</Link>
-      <CopyToOutputDirectory Condition="'$(LinuxArmArtifacts)' == 'true'">PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+
 </Project>
