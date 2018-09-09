@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Text;
 
 namespace Webview
@@ -10,7 +11,7 @@ namespace Webview
         public static IContent FromHtml(string html)
         {
             var dataUri = new StringBuilder("data:text/html,");
-            dataUri.Append(html);
+            dataUri.Append(Uri.EscapeDataString(html));
             return new Content(dataUri.ToString());
         }
 
