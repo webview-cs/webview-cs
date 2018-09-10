@@ -1,4 +1,0 @@
-[submodule "thirdparty/webview"]
-	path = thirdparty/webview
-	url = https://github.com/webview-cs/webview.git
-	branch = master
