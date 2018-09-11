@@ -3,7 +3,6 @@ skip_branch_with_pr: true
 image:
   - Visual Studio 2017
 build_script:
-  - dotnet build -c Release
-  - dotnet pack -c Release
+  - ci_build.ps1
 artifacts:
   - path: '**\*.nupkg'
