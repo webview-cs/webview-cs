@@ -2,7 +2,7 @@
 dotnet build
 
 ## Test
-ForEach ($proj in (Get-ChildItem -Path test -Recurse -Filter '*.csproj'))
+ForEach ($proj in (Get-ChildItem -Path tests -Recurse -Filter '*.csproj'))
 {
 	dotnet test --no-restore --no-build $proj.FullName
 }
