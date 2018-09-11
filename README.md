@@ -1,5 +1,7 @@
 # webview-cs
 
+[![Build status](https://ci.appveyor.com/api/projects/status/4f4843txvwxaays3/branch/master?svg=true)](https://ci.appveyor.com/project/iwillspeak/webview-cs/branch/master)
+
 C# Bindings to https://github.com/zserge/webview. Easily create cross-platform desktop applications with web technologies.
 
 ## Installation
