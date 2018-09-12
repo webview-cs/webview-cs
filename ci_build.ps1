@@ -22,7 +22,7 @@ if (${env:APPVEYOR_REPO_TAG} -eq $true)
 }
 else
 {
-	$suffix = ${env:APPVEYOR_REPO_BRANCH}${env:APPVEYOR_BUILD_NUMBER}
+	$suffix = "${env:APPVEYOR_REPO_BRANCH}${env:APPVEYOR_BUILD_NUMBER}"
 	Write-Host "Building with suffix=$suffix"
 
 	# Non-tag pushes are packaged with a pre-release version
