@@ -1,5 +1,5 @@
 ## Build
-dotnet build
+dotnet build --configuration Release
 
 ## Test
 ForEach ($proj in (Get-ChildItem -Path tests -Recurse -Filter '*.csproj'))
