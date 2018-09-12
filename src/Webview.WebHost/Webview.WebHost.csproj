@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.0.4</Version>
+    <VersionPrefix>0.0.4</VersionPrefix>
     <Description>Run a website as a desktop application using Webview</Description>
     <PackageLicenseUrl>https://github.com/zenakuten/webview-cs/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/zenakuten/webview-cs</PackageProjectUrl>
