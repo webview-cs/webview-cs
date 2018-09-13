@@ -6,6 +6,7 @@
     <Description>Run a website as a desktop application using Webview</Description>
     <PackageLicenseUrl>https://github.com/zenakuten/webview-cs/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/zenakuten/webview-cs</PackageProjectUrl>
+    <LangVersion>Latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

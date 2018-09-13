@@ -13,16 +13,14 @@ namespace Webview.WebHost
         public static void RunWebview(this IWebHost host, WebviewBuilder builder)
         {
             host.Start();
-            var features = host.ServerFeatures.Get<IServerAddressesFeature>();
-            string address = features.Addresses.FirstOrDefault();
-            IContent content = Content.FromUri(new Uri(address));
+            var content = new WebHostContent(host);
             builder.WithContent(content).Build().Run();
             host.StopAsync();
         }
 
-        public static void RunWebview(this IWebHost host, string Title = "", Size size = default(Size))
+        public static void RunWebview(this IWebHost host, string title = "", Size size = default)
         {
-            RunWebview(host, new WebviewBuilder().WithTitle(Title).WithSize(size));
+            RunWebview(host, new WebviewBuilder().WithTitle(title).WithSize(size));
         }
     }
 
