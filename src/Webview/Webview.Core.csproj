@@ -17,9 +17,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Webview.Batteries.Linux" Version="0.0.1" />
-    <PackageReference Include="Webview.Batteries.Mac" Version="0.0.1" />
-    <PackageReference Include="Webview.Batteries.Win" Version="0.0.1" />
+    <PackageReference Include="Webview.Batteries.Linux" Version="0.1.0" />
+    <PackageReference Include="Webview.Batteries.Mac" Version="0.1.0" />
+    <PackageReference Include="Webview.Batteries.Win" Version="0.1.0" />
   </ItemGroup>
 
 </Project>
