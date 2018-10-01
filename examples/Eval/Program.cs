@@ -13,6 +13,7 @@ namespace Eval
             var html = @"<html><body><h1>Eval</h1><div id='content'></div></body></html>";
             var webview = new WebviewBuilder("Eval", Content.FromHtml(html))
                 .WithSize(new Size(1024, 768))
+                .WithInvokeCallback((view, payload) => Console.WriteLine($"Hello {payload}"))
                 .Debug()
                 .Build();
 
@@ -26,6 +27,11 @@ namespace Eval
                 {
                     timeout = DateTime.Now + duration;
                     webview.Eval(@"document.getElementById('content').textContent = 'Time:" + DateTime.Now.ToString() + "'");
+                }
+
+                if (tick % 100 == 0)
+                {
+                    webview.Eval($@"external.invoke('world @ {tick}')");
                 }
 
                 webview.Title = $"Eval - tick:{tick++.ToString()}";

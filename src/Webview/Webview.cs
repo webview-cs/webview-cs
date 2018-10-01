@@ -4,10 +4,12 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace Webview
 {
+    using System.Diagnostics;
     using static Ffi;
 
     public class Webview : IDisposable
     {
+        private readonly Action<Webview, string> _invokeCallback;
         private readonly UIntPtr _webview;
 
         /// <summary>
@@ -28,6 +30,7 @@ namespace Webview
             bool debug,
             Action<Webview, string> invokeCallback)
         {
+            _invokeCallback = invokeCallback;
             _webview = webview_alloc(
                 title,
                 content.ToUri(),
@@ -35,9 +38,23 @@ namespace Webview
                 size.Height,
                 resizable ? 1 : 0,
                 debug ? 1 : 0,
-                null); // TODO: callback support. How do we safely wrap the returned pointer?
+                InvokeCallback);
             if (_webview == UIntPtr.Zero)
                 throw new Exception("Could not allocate webview");
+        }
+
+        /// <summary>
+        /// Invoke Callback
+        /// <para>
+        ///  This is used to forward the invoke request on to the
+        ///  User's callback if one is registered.
+        /// </summary>
+        /// <param name="webview">The webview handle</param>
+        /// <param name="arg">The opaque invoke argument</param>
+        private void InvokeCallback(UIntPtr webview, string arg)
+        {
+            Debug.Assert(webview == _webview);
+            _invokeCallback?.Invoke(this, arg);
         }
 
         /// <summary>

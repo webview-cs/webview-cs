@@ -5,7 +5,7 @@ namespace Webview
 {
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     internal delegate void webview_external_invoke_cb_t(
-        IntPtr webview,
+        UIntPtr webview,
         [MarshalAs(UnmanagedType.LPStr)] string arg);
 
     internal static class Ffi
