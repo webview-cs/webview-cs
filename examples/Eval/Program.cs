@@ -34,6 +34,8 @@ namespace Eval
                     webview.Eval($@"external.invoke('world @ {tick}')");
                 }
 
+                GC.Collect();
+
                 webview.Title = $"Eval - tick:{tick++.ToString()}";
             }
         }

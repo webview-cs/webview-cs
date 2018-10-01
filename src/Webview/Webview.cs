@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 namespace Webview
 {
     using System.Diagnostics;
+    using System.Runtime.InteropServices;
     using static Ffi;
 
     public class Webview : IDisposable
     {
         private readonly Action<Webview, string> _invokeCallback;
+        private readonly GCHandle _invokeHandle;
         private readonly UIntPtr _webview;
 
         /// <summary>
@@ -31,6 +33,8 @@ namespace Webview
             Action<Webview, string> invokeCallback)
         {
             _invokeCallback = invokeCallback;
+            webview_external_invoke_cb_t cb = InvokeCallback;
+            _invokeHandle = GCHandle.Alloc(cb);
             _webview = webview_alloc(
                 title,
                 content.ToUri(),
@@ -38,7 +42,7 @@ namespace Webview
                 size.Height,
                 resizable ? 1 : 0,
                 debug ? 1 : 0,
-                InvokeCallback);
+                cb);
             if (_webview == UIntPtr.Zero)
                 throw new Exception("Could not allocate webview");
         }
@@ -111,7 +115,7 @@ namespace Webview
             if (!disposedValue)
             {
                 webview_release(_webview);
-
+                _invokeHandle.Free();
                 disposedValue = true;
             }
         }
