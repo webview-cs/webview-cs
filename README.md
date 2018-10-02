@@ -114,8 +114,6 @@ This not an issue under linux and osx.
  * [x] Builder API for creating webviews.
  * [x] Native binaries for:
   * Linux x64
-  * Linux Arm
   * macOS x66
   * Windows10 x64
-  * Windows10 x86
  * [x] WebHostBuilder and WebHost extensions for running a .NET Core website as a desktop application
