@@ -96,17 +96,21 @@ To create the standalone executable, the project must be published.
 
     $ dotnet publish -r win10-x64 -c Release
 
-Supported runtime identifiers are 'win10-x64', 'win10-x64', 'osx-x64', 'linux-x64', and 'linux-arm'.
+Supported runtime identifiers are 'win10-x64', 'win10-x64', 'osx-x64', and 'linux-x64'.
 
 ## Windows Console Gotchas
 
-*Note* - Windows has the concept of console and windows applications, but .net core only understands console applications.  To make the resulting .net core console application behave as a windows application (detatches console), you can use the `editbin` utility. The easiest way to get `editbin` is to install Visual Studio Community and include the C++ tools.
+*Note* - Windows has the concept of console and windows applications, but .NET Core only understands console applications.  To make the resulting .NET Core console application behave as a windows application (detatches console), you can use the `editbin` utility. The easiest way to get `editbin` is to install Visual Studio Community and include the C++ tools.
 
 From a Visual Studio Developer command prompt:
 
-    editbin /subsystem:windows app.exe
+    > editbin /subsystem:windows app.exe
 
 This not an issue under linux and osx.
+
+## Adding an Application Icon on Windows
+
+To add an icon to your Windows application create a .NET Framework executable instead of a .NET Core one and attach an icon to that. See [this issue](https://github.com/webview-cs/webview-cs/issues/17) for more information.
 
 ## Feature Status
 
