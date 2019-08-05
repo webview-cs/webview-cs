@@ -11,9 +11,8 @@ namespace Webview
     public class Webview : IDisposable
     {
         private readonly Action<Webview, string> _invokeCallback;
-        private readonly GCHandle _invokeHandle;
         private readonly UIntPtr _webview;
-
+        private webview_external_invoke_cb_t _callBack;
         /// <summary>
         /// Start a simple webview.
         /// </summary>
@@ -33,8 +32,8 @@ namespace Webview
             Action<Webview, string> invokeCallback)
         {
             _invokeCallback = invokeCallback;
-            webview_external_invoke_cb_t cb = InvokeCallback;
-            _invokeHandle = GCHandle.Alloc(cb);
+            _callBack = new webview_external_invoke_cb_t(InvokeCallback);
+
             _webview = webview_alloc(
                 title,
                 content.ToUri(),
@@ -42,7 +41,7 @@ namespace Webview
                 size.Height,
                 resizable ? 1 : 0,
                 debug ? 1 : 0,
-                cb);
+                _callBack);
             if (_webview == UIntPtr.Zero)
                 throw new Exception("Could not allocate webview");
         }
@@ -123,7 +122,6 @@ namespace Webview
             if (!disposedValue)
             {
                 webview_release(_webview);
-                _invokeHandle.Free();
                 disposedValue = true;
             }
         }
