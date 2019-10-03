@@ -118,6 +118,6 @@ To add an icon to your Windows application create a .NET Framework executable in
  * [x] Builder API for creating webviews.
  * [x] Native binaries for:
   * Linux x64
-  * macOS x66
+  * macOS x64
   * Windows10 x64
  * [x] WebHostBuilder and WebHost extensions for running a .NET Core website as a desktop application
