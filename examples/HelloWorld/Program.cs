@@ -7,6 +7,7 @@ namespace HelloWorld
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             var html = @"<html><body><h1>Hello World</h1>";

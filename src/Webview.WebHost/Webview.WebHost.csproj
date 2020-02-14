@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <VersionPrefix>0.0.4</VersionPrefix>
     <Description>Run a website as a desktop application using Webview</Description>
     <PackageLicenseUrl>https://github.com/zenakuten/webview-cs/blob/master/LICENSE</PackageLicenseUrl>

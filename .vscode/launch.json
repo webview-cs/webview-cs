@@ -9,7 +9,7 @@
            "type": "coreclr",
            "request": "launch",
            "preLaunchTask": "build",
-           "program": "${workspaceRoot}/examples/Eval/bin/Debug/netcoreapp2.1/eval.dll",
+           "program": "${workspaceRoot}/examples/Eval/bin/Debug/netcoreapp3.1/Eval.dll",
            "args": [],
            "cwd": "${workspaceRoot}/examples/Eval",
            "stopAtEntry": false,
@@ -21,7 +21,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/examples/HelloWorld/bin/Debug/netcoreapp2.0/HelloWorld.dll",
+            "program": "${workspaceFolder}/examples/HelloWorld/bin/Debug/netcoreapp3.1/HelloWorld.dll",
             "args": [],
             "cwd": "${workspaceFolder}/examples/HelloWorld",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
@@ -35,7 +35,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/examples/Builder/bin/Debug/netcoreapp2.0/Builder.dll",
+            "program": "${workspaceFolder}/examples/Builder/bin/Debug/netcoreapp3.1/Builder.dll",
             "args": [],
             "cwd": "${workspaceFolder}/examples/Builder",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window

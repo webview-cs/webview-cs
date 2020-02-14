@@ -7,7 +7,7 @@ namespace Eval
 {
     class Program
     {
-
+        [STAThread]
         static void Main(string[] args)
         {
             var html = @"<html><body><h1>Eval</h1><div id='content'></div></body></html>";

@@ -7,6 +7,7 @@ namespace Builder
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             new WebviewBuilder(new Uri("https://www.google.com"))

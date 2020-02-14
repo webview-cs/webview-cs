@@ -21,7 +21,12 @@ There are two main APIs to create a webview; the simple API, and the builder API
 ```cs
 using Webview
 
-Webview.Webview.Simple("Window Title", "https://google.com"))
+[STAThread]
+public static void Main(string[] args)
+{
+    Webview.Webview.Simple("Window Title", "https://google.com"))    
+}
+
 ```
 
 You can also provide an initial window size and control if the window can be resized:
@@ -84,7 +89,7 @@ Replace the default Main function in Program.cs with this:
 ```cs
 using Webview.WebHost;
 ...
-
+    [STAThread]
     public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).WithDynamicPort().WithNoOutput().Build().RunWebview();
@@ -100,13 +105,14 @@ Supported runtime identifiers are 'win10-x64', 'win10-x64', 'osx-x64', and 'linu
 
 ## Windows Console Gotchas
 
-*Note* - Windows has the concept of console and windows applications, but .NET Core only understands console applications.  To make the resulting .NET Core console application behave as a windows application (detatches console), you can use the `editbin` utility. The easiest way to get `editbin` is to install Visual Studio Community and include the C++ tools.
+*Note* - Windows has the concept of console and windows applications. For this reason, we need to attribute the main function:
 
-From a Visual Studio Developer command prompt:
-
-    > editbin /subsystem:windows app.exe
-
-This not an issue under linux and osx.
+```cs
+[STAThread] // This is mandatory in Windows for the webview to be displayed.
+static void Main(string[] args) {
+    ...
+}
+```
 
 ## Adding an Application Icon on Windows
 
