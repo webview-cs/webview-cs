@@ -82,6 +82,14 @@ namespace Webview
         }
 
         /// <summary>
+        /// Exit the webview window.
+        /// </summary>
+        public void Exit()
+        {
+            webview_exit(_webview);
+        }
+
+        /// <summary>
         /// Run a single loop 
         /// </summary>
         /// <returns></returns>
