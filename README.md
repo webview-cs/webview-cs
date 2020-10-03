@@ -51,7 +51,7 @@ using System.Drawing;
 
 new WebviewBuilder(new Uri("http://google.com"))
     .WithSize(new Size(1024, 768))
-    .Resizable()
+    .Resizeable()
     .Debug()
     .WithInvokeCallback((webview, action) => {
       Console.WriteLine("Action: {0}", action);
